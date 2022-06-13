@@ -8,9 +8,9 @@ export const databaseProviders = [
             try {
                 const client = createPool({
                     host: 'localhost',
-                    port: 3307,
-                    user: 'test1',
-                    password: 'testsql1@',
+                    port: 3310,
+                    user: 'admin',
+                    password: 'adminsql1@',
                     database: 'test_db',
                     waitForConnections: true,
                     connectionLimit: 10,
