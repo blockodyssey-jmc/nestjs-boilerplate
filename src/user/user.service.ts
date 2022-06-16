@@ -32,7 +32,7 @@ export class UserService {
 
   async create(createUserDto: CreateUserDto): Promise<number> {
     const userId = await this.userDao.create(createUserDto)
-    console.log(`유저 생성 성공 [ uid :${userId}]`)
+    console.log(`유저 생성 성공 [ uid :${userId}] : ${new Date()}`)
     return userId
   }
 
