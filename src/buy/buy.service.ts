@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { BuyDao } from './dao/buy.dao';
+import { Buy } from './entities/buy.entity';
 
 @Injectable()
 export class BuyService {
@@ -7,10 +8,10 @@ export class BuyService {
     private readonly buyDao: BuyDao,
   ) { }
 
-  async create() : Promise<number> {
-    const buyId= await this.buyDao.create()
-    console.log(`buy 생성 성공 [ buyId :${buyId}]`)
-    return buyId
+  async create(): Promise<Buy> {
+    const aBuy = await this.buyDao.create()
+    console.log(`buy 생성 성공 [ buy :${aBuy}]`)
+    return aBuy
 
   }
 }
