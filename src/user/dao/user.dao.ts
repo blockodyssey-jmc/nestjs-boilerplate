@@ -1,9 +1,10 @@
-import { ConflictException, Inject, NotFoundException } from "@nestjs/common";
+import { ConflictException, Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { FieldPacket, Pool, ResultSetHeader, RowDataPacket } from 'mysql2'
 import { CreateUserDto } from "../dto/req/create-user.dto";
 import { UpdateUserDto } from "../dto/req/update-user.dto";
 import { User } from "../entities/user.entity";
 
+@Injectable()
 export class UserDao {
     constructor(
         @Inject('DATABASE_CONNECTION') private readonly db: Pool

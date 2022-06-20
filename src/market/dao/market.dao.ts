@@ -1,8 +1,9 @@
-import { ConflictException, Inject } from "@nestjs/common";
+import { ConflictException, Inject, Injectable } from "@nestjs/common";
 import { FieldPacket, Pool, ResultSetHeader, RowDataPacket } from "mysql2";
 import { CreateMarketDto } from "../dto/create-market.dto";
 import { Market } from "../entities/market.entity";
 
+@Injectable()
 export class MarketDao {
     constructor(
         @Inject('DATABASE_CONNECTION') private readonly db: Pool
@@ -36,7 +37,7 @@ export class MarketDao {
             const [result] = await this.db.promise().query<ResultSetHeader>(sql, createMarketDto)
             return result.insertId
         } catch (e) {
-            console.log(`create product 에러발생 : [ createProductDto : ${createMarketDto} ] : ${e}`)
+            console.log(`create market 에러발생 : [ createProductDto : ${createMarketDto} ] : ${e}`)
             throw new ConflictException(`DB 유저 생성 에러 발생`)
         }
     }
